@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import TodoTemplate from './component/TodoTemplate';
 import TodoInsert from './component/TodoInsert';
 import TodoList from './component/TodoList';
+import TodoListItem from './component/TodoListItem';
 
 
 
@@ -61,6 +62,11 @@ function App() {
         // odos.concat(todo) 는 새로운 배열을 리턴. state 변화. 결국은 재런더링 하게 된다.
 
     }
+    const onTest = (id) =>{
+        window.alert(id +'todo app 입니다.')
+    } 
+       
+
     return (
      <>
             {/* <button onClick={() => handleInsert("테스트할일")}>할 일 추가</button> */}
@@ -70,15 +76,20 @@ function App() {
         {/* 인자가 있을때에는 ()=> 함수를 써양 한다 .
             인자가 없을때에는 ()=> 안써도 된다. 여기서 인자는 ("테스트할일")
           */}
-           
-            <TodoTemplate>
-                 <TodoInsert onInsert={handleInsert}/>
-                 <TodoList todos={todos} onRemove={handleRemove} 
-                 onhecked={handleChecked}/>
-                 {/* 프로퍼티이름={변수명} */}
-            </TodoTemplate>
+            {/* todos.map() 을 싱행하는 컴포넌트. todos 없으면 오류 */}
+            {/* <TodoList /> */}
+            <TodoList todos={[]}/>
+            <TodoList todos={[
+                {id:1,
+                    checked: true
+                },
+                { id:2,
+                    checked:false
+                }
+            ]}/>
 
-   
+
+          
      </>
        
     );
